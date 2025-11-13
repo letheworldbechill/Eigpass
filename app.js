@@ -1,186 +1,137 @@
-// 30 Sekunden Klarheit – Vanilla JS App
+      const steps = [
+  {
+    title: "Stopp. Atmen.",
+    text: "Halte inne. Nimm drei tiefe Atemzüge. Spüre, wie sich dein Körper entspannt.",
+  },
+  {
+    title: "Realität statt Geschichte.",
+    text: "Was ist wirklich passiert? Trenne Fakten von deiner Interpretation.",
+  },
+  {
+    title: "Kontrolle prüfen.",
+    text: "Was kann ich beeinflussen? Was liegt außerhalb meiner Kontrolle?",
+  },
+  {
+    title: "Nächster kleiner Schritt.",
+    text: "Was ist die kleinste Handlung, die ich jetzt tun kann?",
+  },
+  {
+    title: "Fremdlast abgeben.",
+    text: "Trage ich etwas, das nicht meine Verantwortung ist?",
+  },
+  {
+    title: "Jetzt vs alter Film.",
+    text: "Ist das eine neue Situation oder spiele ich ein altes Muster ab?",
+  },
+  {
+    title: "Klarer Abschluss.",
+    text: "Was habe ich gelernt? Wie gehe ich weiter?",
+  },
+];
 
-(function () {
-  const steps = [
-    {
-      id: 1,
-      title: "Stopp. Atmen.",
-      description:
-        "Halte kurz inne. Atme dreimal tief ein und aus. Spüre, wie sich dein Körper beruhigt.",
-    },
-    {
-      id: 2,
-      title: "Realität statt Geschichte.",
-      description:
-        "Was ist wirklich passiert? Trenne die reinen Fakten von deiner Gedankenstory.",
-    },
-    {
-      id: 3,
-      title: "Kontrolle prüfen.",
-      description:
-        "Was kannst du beeinflussen? Und was liegt außerhalb deiner Kontrolle?",
-    },
-    {
-      id: 4,
-      title: "Nächster kleiner Schritt.",
-      description:
-        "Was ist der kleinste, einfache Schritt, den du jetzt tun kannst?",
-    },
-    {
-      id: 5,
-      title: "Fremdlast abgeben.",
-      description:
-        "Trägst du gerade Gedanken oder Verantwortung, die eigentlich nicht deine sind?",
-    },
-    {
-      id: 6,
-      title: "Jetzt oder alter Film?",
-      description:
-        "Ist das eine neue Situation – oder reagierst du mit einem alten Muster?",
-    },
-    {
-      id: 7,
-      title: "Klarer Abschluss.",
-      description:
-        "Was nimmst du heute mit? Wie willst du jetzt weitergehen?",
-    },
-  ];
+let screen = "home";
+let currentStep = 0;
 
-  /** @type {"home" | number} */
-  let currentScreen = "home";
+function render() {
+  const app = document.getElementById("app");
 
-  function render() {
-    const app = document.getElementById("app");
-    if (!app) return;
-
-    if (currentScreen === "home") {
-      renderHome(app);
-    } else {
-      renderStep(app, currentScreen);
-    }
-  }
-
-  function renderHome(app) {
+  if (screen === "home") {
     app.innerHTML = `
       <div class="app">
-        <header class="app-header">
-          <h1 class="app-header__title">30 Sekunden Klarheit</h1>
-        </header>
 
-        <main class="app-main app-main--home">
-          <section class="home-intro">
-            <p class="subtitle">Guter Morgen.</p>
-            <h2 class="headline">Nimm dir einen Moment nur für dich.</h2>
-            <p class="subtitle">
-              Sieben ruhige Schritte helfen dir, klarer zu sehen und bewusster in den Tag zu gehen.
-            </p>
-          </section>
+        <div class="header">Kompass der Eigenverantwortung</div>
 
-          <section class="card">
-            <h3 class="card-title">Wie es funktioniert</h3>
-            <p class="section-text">
-              Du gehst Frage für Frage durch und gibst dir selbst klare Antworten.
-              Kein Druck, kein Muss – nur ein kurzer Check-in mit dir.
-            </p>
-          </section>
+        <div class="main">
 
-          <button class="primary-btn" type="button" data-action="start">
-            Los geht’s
-          </button>
-        </main>
-      </div>
-    `;
+          <div class="title-center">30 Sekunden Klarheit</div>
 
-    const startBtn = app.querySelector('[data-action="start"]');
-    if (startBtn) {
-      startBtn.addEventListener("click", () => {
-        currentScreen = 1;
-        render();
-      });
-    }
-  }
-
-  function renderStep(app, stepNumber) {
-    const stepIndex = stepNumber - 1;
-    const step = steps[stepIndex];
-    const isLast = stepNumber === steps.length;
-
-    const progressBars = steps
-      .map((_, index) => {
-        const activeClass = index < stepNumber ? "progress-bar--active" : "";
-        return `<div class="progress-bar ${activeClass}"></div>`;
-      })
-      .join("");
-
-    app.innerHTML = `
-      <div class="app">
-        <header class="app-header">
-          <h1 class="app-header__title">Schritt ${stepNumber} von ${steps.length}</h1>
-        </header>
-
-        <main class="app-main app-main--steps">
-          <div class="progress">
-            ${progressBars}
+          <div class="headline">
+            In sieben kurzen Schritten zu mehr Selbstverantwortung und Klarheit.
           </div>
 
-          <section class="card card--step">
-            <h2 class="headline">${step.title}</h2>
-            <p class="step-text">${step.description}</p>
-
-            <div style="margin-top: 1.4rem;">
-              <label class="textarea-label" for="reflection">
-                Deine Gedanken (optional)
-              </label>
-              <textarea
-                id="reflection"
-                class="textarea"
-                spellcheck="false"
-                placeholder="Wenn du magst, schreib hier etwas auf …"
-              ></textarea>
+          <div class="card">
+            <div class="card-title">Wie es funktioniert</div>
+            <div class="card-text">
+              Dieser Kompass führt dich durch sieben Fragen, die dir helfen, in herausfordernden Momenten Klarheit zu gewinnen und eigenverantwortlich zu handeln.
             </div>
-          </section>
-
-          <div class="nav-buttons">
-            <button class="primary-btn" type="button" data-action="next">
-              ${isLast ? "Fertig" : "Weiter"}
-            </button>
-
-            <button class="link-btn" type="button" data-action="home">
-              Zurück zum Start
-            </button>
           </div>
-        </main>
+
+          <button class="button" onclick="start()">Klarheit jetzt</button>
+
+          <a class="link" href="#">Mehr über den Kompass</a>
+
+        </div>
       </div>
     `;
-
-    const nextBtn = app.querySelector('[data-action="next"]');
-    const homeBtn = app.querySelector('[data-action="home"]');
-
-    if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        currentScreen = isLast ? "home" : stepNumber + 1;
-        render();
-      });
-    }
-
-    if (homeBtn) {
-      homeBtn.addEventListener("click", () => {
-        currentScreen = "home";
-        render();
-      });
-    }
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    render();
+  if (screen === "step") {
+    const step = steps[currentStep];
 
-    // Service Worker Registrierung
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("service-worker.js")
-        .catch((err) => {
-          console.warn("Service Worker konnte nicht registriert werden:", err);
-        });
-    }
-  });
-})();/* truncated for brevity; full JS included earlier */
+    app.innerHTML = `
+      <div class="app">
+
+        <div class="header">Schritt ${currentStep + 1} von 7</div>
+
+        <div class="main">
+
+          <div class="progress">
+            ${steps
+              .map(
+                (_, i) =>
+                  `<div class="progress-dot ${
+                    i <= currentStep ? "active" : ""
+                  }"></div>`
+              )
+              .join("")}
+          </div>
+
+          <div class="step-card">
+
+            <div class="step-title">${step.title}</div>
+
+            <div class="step-text">${step.text}</div>
+
+            <textarea
+              class="textarea"
+              placeholder="Deine Gedanken dazu… (optional)"
+            ></textarea>
+
+          </div>
+
+          <button class="button" onclick="nextStep()">
+            ${currentStep === 6 ? "Fertig" : "Weiter"}
+          </button>
+
+          <a class="link" onclick="goHome()">Zurück zum Start</a>
+
+        </div>
+      </div>
+    `;
+  }
+}
+
+/* ===== LOGIC ===== */
+
+function start() {
+  currentStep = 0;
+  screen = "step";
+  render();
+}
+
+function nextStep() {
+  if (currentStep === steps.length - 1) {
+    goHome();
+  } else {
+    currentStep++;
+    render();
+  }
+}
+
+function goHome() {
+  screen = "home";
+  currentStep = 0;
+  render();
+}
+
+document.addEventListener("DOMContentLoaded", render);
