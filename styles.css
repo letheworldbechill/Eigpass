@@ -1,21 +1,4 @@
-/* =========
-   Basis
-   ========= */
-
-:root {
-  --bg: #f5f7fa;
-  --bg-soft: #ffffff;
-  --text: #0f172a;
-  --text-soft: #6b7280;
-  --accent: #0f766e;
-  --accent-soft: #14b8a6;
-  --border: #e5e7eb;
-  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
-  --radius-lg: 22px;
-  --radius-md: 16px;
-  --transition-fast: 0.18s ease-out;
-  --max-width: 420px;
-}
+/* ===== RESET ===== */
 
 *,
 *::before,
@@ -23,295 +6,186 @@
   box-sizing: border-box;
 }
 
-html {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Segoe UI", Roboto, sans-serif;
-  text-size-adjust: 100%;
-}
-
 body {
   margin: 0;
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #e0f7f5 0, #f5f7fa 55%, #f5f5f5 100%);
-  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Text",
+    "Segoe UI", Roboto, sans-serif;
+  background: #e9eef3;
   display: flex;
   justify-content: center;
 }
 
-/* =========
-   App-Layout
-   ========= */
+/* ===== APP WRAPPER ===== */
 
 .app {
-  min-height: 100vh;
   width: 100%;
-  max-width: var(--max-width);
+  max-width: 430px;
+  min-height: 100vh;
+  background: #f5f7fa;
   display: flex;
   flex-direction: column;
 }
 
-/* Header */
+/* ===== HEADER ===== */
 
-.app-header {
-  height: 64px;
-  padding: 0 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(12px);
-  background: linear-gradient(
-      120deg,
-      rgba(15, 118, 110, 0.08),
-      rgba(15, 23, 42, 0.06)
-    ),
-    rgba(248, 250, 252, 0.85);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+.header {
+  background: #0a2f45;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 0 0 20px 20px;
 }
 
-.app-header__title {
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: #0f172a;
-  margin: 0;
+/* ===== MAIN CONTENT ===== */
+
+.main {
+  padding: 24px;
+  padding-top: 40px;
 }
 
-/* Main */
+/* ===== TYPOGRAPHY ===== */
 
-.app-main {
-  flex: 1;
-  padding: 1.75rem 1.25rem 2.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
+.title-center {
+  text-align: center;
+  font-size: 14px;
+  color: #0a2f45;
+  opacity: 0.9;
+  margin-bottom: 10px;
 }
-
-.app-main--home {
-  justify-content: center;
-}
-
-.app-main--steps {
-  justify-content: flex-start;
-}
-
-/* =========
-   Typografie
-   ========= */
 
 .headline {
-  font-size: 1.85rem;
-  line-height: 1.2;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin: 0 0 0.5rem;
-  color: #020617;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0a2f45;
+  margin-bottom: 20px;
 }
 
-.subtitle {
-  margin: 0;
-  font-size: 1.02rem;
-  line-height: 1.6;
-  color: var(--text-soft);
+.paragraph {
+  text-align: center;
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.5;
 }
 
-.section-text {
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: var(--text-soft);
-  margin: 0;
+/* ===== CARD ===== */
+
+.card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
 }
 
 .card-title {
-  font-size: 1.1rem;
+  font-size: 15px;
   font-weight: 600;
-  margin: 0 0 0.5rem;
-  color: #0f172a;
+  color: #0a2f45;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* ===== BUTTON (zentriert!) ===== */
+
+.button {
+  width: 100%;
+  height: 52px;
+  background: #0a2f45;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ← perfekte Zentrierung */
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.button:hover {
+  opacity: 0.92;
+}
+
+/* ===== LINK ===== */
+
+.link {
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #0a2f45;
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+/* ===== PROGRESS BAR ===== */
+
+.progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.progress-dot {
+  flex: 1;
+  height: 3px;
+  background: #d0d7de;
+  border-radius: 20px;
+}
+
+.progress-dot.active {
+  background: #0a2f45;
+}
+
+/* ===== STEP CARD ===== */
+
+.step-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.step-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0a2f45;
+  margin-bottom: 14px;
 }
 
 .step-text {
-  font-size: 1.02rem;
-  line-height: 1.7;
-  color: var(--text);
-  margin: 0;
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.5;
+  margin-bottom: 18px;
 }
 
-/* =========
-   Cards
-   ========= */
-
-.card {
-  width: 100%;
-  background: var(--bg-soft);
-  border-radius: var(--radius-lg);
-  padding: 1.35rem 1.4rem;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-}
-
-.card--step {
-  margin-top: 0.25rem;
-}
-
-/* Home Intro */
-
-.home-intro {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-/* =========
-   Buttons
-   ========= */
-
-.primary-btn {
-  width: 100%;
-  border: none;
-  border-radius: var(--radius-md);
-  height: 56px;
-  padding: 0 1.25rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-  color: #ecfeff;
-  font-size: 1.02rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  box-shadow: 0 16px 30px rgba(15, 118, 110, 0.35);
-  transition: transform var(--transition-fast),
-    box-shadow var(--transition-fast), filter var(--transition-fast);
-}
-
-.primary-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 20px 38px rgba(15, 118, 110, 0.4);
-  filter: brightness(1.03);
-}
-
-.primary-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 10px 22px rgba(15, 118, 110, 0.35);
-}
-
-.primary-btn:disabled {
-  opacity: 0.4;
-  cursor: default;
-  box-shadow: none;
-}
-
-/* Kleiner Pfeil im Button */
-
-.primary-btn::after {
-  content: "→";
-  font-size: 1rem;
-}
-
-/* Link-Button */
-
-.link-btn {
-  border: none;
-  background: none;
-  padding: 0;
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--text-soft);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-}
-
-/* Navigation-Button-Container */
-
-.nav-buttons {
-  margin-top: 1.1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-/* =========
-   Progress-Bar
-   ========= */
-
-.progress {
-  width: 100%;
-  display: flex;
-  gap: 4px;
-  margin-bottom: 1rem;
-}
-
-.progress-bar {
-  flex: 1;
-  height: 4px;
-  border-radius: 999px;
-  background-color: rgba(203, 213, 225, 0.7);
-  overflow: hidden;
-  position: relative;
-}
-
-.progress-bar--active::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
-}
-
-/* =========
-   Textarea / Reflexion
-   ========= */
-
-.textarea-label {
-  display: block;
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: #64748b;
-  margin-bottom: 0.4rem;
-}
+/* ===== TEXTAREA ===== */
 
 .textarea {
   width: 100%;
-  min-height: 120px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  padding: 0.9rem 1rem;
-  font-size: 0.96rem;
-  font-family: inherit;
+  height: 110px;
+  padding: 12px;
+  font-size: 14px;
   resize: vertical;
-  background: #f9fafb;
-  outline: none;
-  transition: border-color var(--transition-fast),
-    box-shadow var(--transition-fast), background var(--transition-fast);
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-family: inherit;
 }
 
 .textarea::placeholder {
-  color: #cbd5e1;
+  color: #94a3b8;
 }
-
-.textarea:focus {
-  border-color: var(--accent-soft);
-  background: #ffffff;
-  box-shadow: 0 0 0 1px rgba(20, 184, 166, 0.4);
-}
-
-/* =========
-   Responsive
-   ========= */
-
-@media (max-width: 480px) {
-  .app-main {
-    padding-inline: 1rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    scroll-behavior: auto !important;
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
-  }/* truncated for brevity; full CSS included earlier */
