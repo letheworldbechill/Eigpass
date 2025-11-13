@@ -1,0 +1,10 @@
+{
+  "name": "30 Sekunden Klarheit",
+  "short_name": "Klarheit",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F2F4F7",
+  "theme_color": "#0A2740",
+  "description": "Ein kurzer täglicher Kompass mit sieben Schritten für mehr Klarheit und Eigenverantwortung.",
+  "icons": []
+}
